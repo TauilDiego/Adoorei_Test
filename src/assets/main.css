@@ -16,9 +16,3 @@ a,
   color: hsl(334, 99%, 48%);
   transition: 0.4s;
 }
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(334, 100%, 22%, 0.2);
-  }
-}

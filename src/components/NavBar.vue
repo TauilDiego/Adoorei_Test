@@ -10,10 +10,16 @@
 
 
 
-    <div class="col-start-1 col-span-6 flex flex-row flex-nowrap">
-      <router-link class="mr-1" to="/">Vitrine</router-link>
-      <router-link class="mr-1" to="/category">Categoria</router-link>
-      <router-link class="mr-1" to="/cart">Carrinho</router-link>
+    <div class="col-start-1 col-span-6 flex flex-row flex-nowrap" v-if="!loading">
+      <router-link
+          class="mr-3"
+          v-for="(category, index) in categories"
+          :key="index"
+          :to="`/category/${category}`"
+      >
+        {{category}}
+      </router-link>
+
     </div>
 
     <div class="col-end-12 col-span-1">
@@ -28,6 +34,32 @@
 </template>
 
 <script setup lang="ts">
+
+import {getCategories} from "@/repository/ShowcaseService";
+import {nextTick, onMounted, ref, Ref} from "vue";
+import router from "@/router";
+import CategoryFilter from "@/views/CategoryFilter.vue";
+
+let categories: Array<string>
+let loading: Ref<boolean> = ref(false)
+
+onMounted(async () => {
+  try {
+    loading.value = true
+
+    categories = await getCategories()
+    categories.forEach(category=>{
+      router.addRoute({ path: `/category/${category}`, component: CategoryFilter })
+    })
+
+    await nextTick()
+    loading.value = false
+
+  } catch (error) {
+    loading.value = false
+
+  }
+})
 </script>
 
 <style scoped>
