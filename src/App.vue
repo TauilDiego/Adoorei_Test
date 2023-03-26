@@ -3,7 +3,7 @@
     <NavBar/>
   </nav>
 
-  <main class="MainContent">
+  <main>
     <RouterView/>
   </main>
 
@@ -24,8 +24,5 @@ import NavBar from "@/components/NavBar.vue";
 .TopNavigation{
   width: calc(100vw - 4rem);
   height: 100px;
-}
-.MainContent{
-  margin-top: 100px;
 }
 </style>
