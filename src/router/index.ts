@@ -5,7 +5,7 @@ const category = () => import('@/views/CategoryFilter.vue')
 const cart = () => import('@/views/CartCheckout.vue')
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',

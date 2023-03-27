@@ -1,14 +1,11 @@
 <template>
   <div class="grid grid-cols-12">
 
-
     <div class="col-start-1 col-span-12 mb-6">
       <router-link to="/">
         <img src="https://www.adoorei.com.br/wp-content/uploads/2022/03/LOGO-ADOREI.svg" alt="Logo da Adoorei">
       </router-link>
     </div>
-
-
 
     <div class="col-start-1 col-span-6 flex flex-row flex-nowrap" v-if="!loading">
       <router-link
@@ -19,7 +16,6 @@
       >
         {{category}}
       </router-link>
-
     </div>
 
     <div class="col-end-12 col-span-1">
@@ -35,7 +31,7 @@
 
 <script setup lang="ts">
 
-import {getCategories} from "@/repository/ShowcaseService";
+import {getCategories} from "@/repository/CategoryService";
 import {nextTick, onMounted, ref, Ref} from "vue";
 import router from "@/router";
 import CategoryFilter from "@/views/CategoryFilter.vue";

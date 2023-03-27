@@ -23,6 +23,6 @@ import NavBar from "@/components/NavBar.vue";
 <style scoped>
 .TopNavigation{
   width: calc(100vw - 4rem);
-  height: 100px;
+  height: 130px;
 }
 </style>
