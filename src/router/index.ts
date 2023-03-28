@@ -13,15 +13,23 @@ const router = createRouter({
       component: showcase
     },
     {
-      path: '/category',
+      path: '/category/:categoryName',
       name: 'category',
-      component: category
+      component: category,
+      props: true,
+    },
+    {
+      path: '/product/:productId',
+      name: 'product',
+      component: category,
+      props: true,
     },
     {
       path: '/cart',
       name: 'cart',
       component: cart
-    }
+    },
+
   ]
 })
 
