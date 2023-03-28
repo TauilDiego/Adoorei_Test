@@ -1,5 +1,5 @@
 <template>
-  <div class="w-72 flex flex-col rounded-2xl shadow-lg shadow-gray-600 mb-10  items-center" style="height: 550px" @click="redirectToProduct(product.id)">
+  <div class="w-72 h-[550px] flex flex-col rounded-2xl shadow-lg shadow-gray-600 mb-10  items-center" @click="redirectToProduct(product.id)">
 
     <div class="w-fit">
 
@@ -13,9 +13,16 @@
     </div>
 
     <div class="flex-row">
+      <p class="w-60 min-h-fit flex-wrap leading-tight">{{ product.title }}</p>
+      <p>
+<!--        <span v-for="(n, i) in 5" :class="fa fa-star checked"></span>-->
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </p>
+      <p class="w-60 h-6 overflow-ellipsis">{{ product.price }}</p>
     </div>
-    <p class="w-60 min-h-fit flex-wrap leading-tight">{{ product.title }}</p>
-    <p class="w-60 h-6 overflow-ellipsis">{{ product.price }}</p>
   </div>
 </template>
 
@@ -33,5 +40,7 @@ function redirectToProduct(id: number) {
 </script>
 
 <style scoped>
-
+.checked {
+  color: orange;
+}
 </style>

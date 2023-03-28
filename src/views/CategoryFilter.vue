@@ -27,6 +27,7 @@ onUpdated(() => {
 watch(categoryName, async () => {
   try {
     loading.value = true
+    products = []
     products = await getInCategory(categoryName.value)
     console.log(products)
 
