@@ -9,7 +9,7 @@
 
     <div class="col-start-1 col-span-6 flex flex-row flex-nowrap" v-if="!loading">
       <router-link
-          class="mr-3"
+          class="mr-3 whitespace-nowrap"
           v-for="(category, index) in categories"
           :key="index"
           :to="`/category/${category}`"
@@ -44,9 +44,6 @@ onMounted(async () => {
     loading.value = true
 
     categories = await getCategories()
-    categories.forEach(category=>{
-      router.addRoute({ path: `/category/${category}`, component: CategoryFilter })
-    })
 
     await nextTick()
     loading.value = false
