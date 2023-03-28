@@ -1,7 +1,5 @@
 <template>
-    {{categoryName}}
   <div class="pt-14 grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 mx-auto" v-if="!loading">
-
     <div v-for="(product, index) in products" :key="index">
       <card-product :product="product"/>
     </div>
@@ -11,14 +9,18 @@
 <script setup lang="ts">
 
 import {useRoute} from "vue-router";
-import {nextTick, onBeforeUpdate, onMounted, onUpdated, ref, Ref, watch} from "vue";
+import {nextTick, onMounted, onUpdated, ref, Ref, watch} from "vue";
 import {getInCategory} from "@/repository/CategoryService";
 import type {IProduct} from "@/interfaces/IProduct";
 import CardProduct from "@/components/CardProduct.vue";
 
-let categoryName: Ref<string|string[]> = ref(useRoute().params.categoryName)
+let categoryName: Ref<string|string[]> = ref('')
 let loading: Ref<boolean> = ref(false)
 let products: IProduct[]
+
+onMounted(() => {
+  categoryName.value = useRoute().params.categoryName
+})
 
 onUpdated(() => {
   categoryName.value = useRoute().params.categoryName
@@ -29,8 +31,6 @@ watch(categoryName, async () => {
     loading.value = true
     products = []
     products = await getInCategory(categoryName.value)
-    console.log(products)
-
 
   }catch (error) {
     console.log(error)

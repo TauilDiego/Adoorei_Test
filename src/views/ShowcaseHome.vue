@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-14 grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 mx-auto" v-if="!loading">
+  <div class="max-w-[1249px] pt-14 grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 mx-auto" v-if="!loading">
     <div v-for="(product, index) in products" :key="index">
       <card-product :product="product"/>
     </div>
