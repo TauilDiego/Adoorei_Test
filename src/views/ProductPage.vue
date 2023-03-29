@@ -37,7 +37,7 @@
         <button class="bg-orange-400 text-white font-bold py-2 px-4 rounded" @click="buy">Comprar</button>
       </div>
       <div class="text-[22px] text-left my-4">
-        <button class="border-2 border-cyan-400 text-cyan-400 font-bold py-2 px-4 rounded" @click="addToCart">
+        <button class="border-2 border-cyan-400 text-cyan-400 font-bold py-2 px-4 rounded" @click="addToCart(), notify({title: 'Adicionando produto ao carrinho', })">
           Adicionar ao carrinho
         </button>
       </div>
@@ -51,13 +51,14 @@
 <script setup lang="ts">
 
 import {useRoute} from "vue-router";
-import {nextTick, onMounted, ref, Ref, watch} from "vue";
+import {nextTick, onMounted, onUpdated, ref, Ref, watch} from "vue";
 import type {IProduct} from "@/interfaces/IProduct";
 import {getProductInfo} from "@/repository/ProductService";
 import {useCart} from "@/stores/cart";
 import router from "@/router";
+import {notify} from "@kyvg/vue3-notification";
 
-let productId: Ref<string | string[]> = ref(useRoute().params.productId)
+let productId: Ref<string | string[]> = ref('')
 let loading: Ref<boolean> = ref(false)
 let product: IProduct = {
   "id": 0,
@@ -76,10 +77,31 @@ let minusButtonClass: Ref<string> = ref('bg-gray-400')
 let plusButtonClass: Ref<string> = ref('bg-blue-500 hover:bg-blue-700')
 const store = useCart()
 
-onMounted(async () => {
+
+onMounted(() => {
+  productId.value = useRoute().params.productId
+})
+
+onUpdated(() => {
+  productId.value = useRoute().params.productId
+})
+
+
+watch(productId, async () => {
   try {
-    productId.value = useRoute().params.productId
     loading.value = true
+    product = {
+      "id": 0,
+      "title": "",
+      "price": 0,
+      "description": "",
+      "category": "",
+      "image": "",
+      "rating": {
+        "rate": 0,
+        "count": 0
+      }
+    }
     product = await getProductInfo(productId.value)
   } catch (error) {
     console.log(error)
