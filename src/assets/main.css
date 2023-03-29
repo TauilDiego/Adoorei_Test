@@ -4,9 +4,6 @@
 @tailwind utilities;
 
 #app {
-  max-width: 1280px;
-  padding: 2rem;
-
   font-weight: normal;
 }
 
@@ -15,4 +12,12 @@ a,
   text-decoration: none;
   color: hsl(334, 99%, 48%);
   transition: 0.4s;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

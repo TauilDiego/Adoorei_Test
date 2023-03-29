@@ -3,9 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 const showcase = () => import('@/views/ShowcaseHome.vue')
 const category = () => import('@/views/CategoryFilter.vue')
 const cart = () => import('@/views/CartCheckout.vue')
+const product = () => import('@/views/ProductPage.vue')
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -13,15 +14,23 @@ const router = createRouter({
       component: showcase
     },
     {
-      path: '/category',
+      path: '/category/:categoryName',
       name: 'category',
-      component: category
+      component: category,
+      props: true,
+    },
+    {
+      path: '/product/:productId',
+      name: 'product',
+      component: product,
+      props: true,
     },
     {
       path: '/cart',
       name: 'cart',
       component: cart
-    }
+    },
+
   ]
 })
 
