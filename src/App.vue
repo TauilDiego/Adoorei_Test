@@ -1,4 +1,6 @@
 <template>
+  <notifications position="bottom right"/>
+
   <nav class="TopNavigation">
     <NavBar/>
   </nav>
