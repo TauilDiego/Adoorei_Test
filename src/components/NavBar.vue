@@ -20,7 +20,7 @@
 
     <div class="col-end-13 col-span-2 flex flex-row flex-nowrap justify-end">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" name="asd" class="focus-visible:outline-0 w-44 px-3 pt-2 pb-1 bg-cyan-100 rounded shadow-xl shadow-cyan-500/50">
+      <input type="text" name="asd" class="focus-visible:outline-0 w-44 px-3 pt-2 pb-1 bg-cyan-100 rounded shadow-lg shadow-cyan-500/50">
       <router-link class="text-cyan-400 hover:bg-cyan-100" to="/cart">Carrinho</router-link>
     </div>
 

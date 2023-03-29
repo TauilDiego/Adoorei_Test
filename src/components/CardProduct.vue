@@ -1,5 +1,5 @@
 <template>
-  <div class="w-72 h-[550px] flex flex-col rounded-2xl shadow-md shadow-gray-600 mb-10  items-center" @click="redirectToProduct(product.id)">
+  <div class="w-72 h-[550px] flex flex-col rounded-2xl bg-white mb-10  items-center" @click="redirectToProduct(product.id)">
 
     <div class="w-fit">
 
