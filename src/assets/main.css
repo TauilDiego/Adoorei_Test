@@ -4,7 +4,6 @@
 @tailwind utilities;
 
 #app {
-  padding: 2rem;
   font-weight: normal;
 }
 

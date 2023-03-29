@@ -6,14 +6,11 @@ import router from './router'
 import './assets/main.css'
 import {createApp} from "vue";
 
-// const { createApp } = Vue
-// const { createVuetify } = Vuetify
-//
-// const vuetify = createVuetify()
 
+const pinia = createPinia()
 const app = createApp(App)
 
-app.use(createPinia())
 app.use(router)
 
+app.use(pinia)
 app.mount('#app')

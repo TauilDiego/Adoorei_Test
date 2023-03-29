@@ -3,11 +3,11 @@
     <NavBar/>
   </nav>
 
-  <main>
+  <main class="bg-gray-100 mt-5 pt-10">
     <RouterView/>
   </main>
 
-  <footer class="bg-gray-200">
+  <footer class="bg-gray-50">
     <!-- ... -->
   </footer>
 
@@ -23,6 +23,7 @@ import NavBar from "@/components/NavBar.vue";
 <style scoped>
 .TopNavigation{
   width: calc(100vw - 4rem);
-  height: 130px;
+  height: 150px;
+  padding: 2rem;
 }
 </style>
